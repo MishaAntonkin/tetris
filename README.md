@@ -1,4 +1,6 @@
-# Game available [here](https://MishaAntonkin.tetris)
+# Tetris
+
+just open index.html in browser
 
 ### Available Scripts
 
