@@ -1,0 +1,107 @@
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.table {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.bordered {
+    border-top:1px solid red;
+}
+
+.tr {
+    display: flex;
+}
+
+.td {
+    width: 20px;
+    height: 20px;
+    margin: 1px;
+}
+
+.td.red {
+  background: red;
+}
+
+.td.green {
+  background: green;
+}
+
+.td.grey {
+  background: grey;
+}
+
+.td.orange {
+  background: orange;
+}
+
+.td.blue {
+  background: blue;
+}
+
+.td.teal {
+    background: #37c1c1;
+}
+
+.td.yellow {
+  background: yellow;
+}
+
+.td.purple {
+  background: purple;
+}
+
+.container {
+    display: inline-block;
+    margin: 0 0 0 calc(50% - 110px);
+    border-color: black;
+    border-style: solid;
+    border-width: 0px 2px 2px 2px;
+    padding: 0 3px 3px 3px;
+    width: 220px;
+    vertical-align: top;
+}
+
+.controls {
+    padding: 0 10px 10px 10px;
+    display: inline-block;
+}
+
+.scores {
+    display: block;
+    margin: 0 0 10px 0;
+}
+
+.restart-btn {
+    display: block;
+    margin: auto;
+    border: none;
+    border-radius: 5px;
+    padding: 7px 16px;
+    background-color: rgb(230, 230, 230);
+    font-weight: 700;
+    box-shadow: 1px 1px 0px 1px rgba(0, 0, 0, 0.75);
+}
+
+.controls-btn {
+    margin-top: 20px;
+}
+
+.controls-btn > h3.header-controls {
+    text-align: center;
+    margin: 0;
+}
+
+p.control-rules {
+    display: block;
+}
+
+p.control-rules > span.key {
+    border-radius: 4px;
+    padding: 2px 4px;
+    background-color: rgb(230, 230, 230);
+
+}
