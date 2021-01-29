@@ -1,6 +1,6 @@
 # Tetris
 
-just open index.html in browser
+can play [here]( https://color-falling-blocks.herokuapp.com/)
 
 ### Available Scripts
 
