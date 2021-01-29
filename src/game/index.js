@@ -1,5 +1,5 @@
 import { FIELD_HEIGHT, FIELD_WIDTH, LINE_SCORES, MAX_SCORE, GAME_END_LINE } from '../constants';
-import { FRAMES, LEFT_KEY, RIGHT_KEY, DOWN_KEY, ROTATE_KEY } from '../settings';
+import { FRAMES, LEFT_KEY, RIGHT_KEY, DOWN_KEY, ROTATE_KEY, FALLING_SPEED } from '../settings';
 import { createRandomFigure } from './figures';
 
 
@@ -16,6 +16,7 @@ class TetrisGame {
     this._changeMatrix = changeMatrix;
     this._changeScore = changeScore;
     this._score = 0;
+    this._falling_speed = FRAMES;
   }
 
   set interval(val) {
@@ -23,6 +24,7 @@ class TetrisGame {
   }
 
   iterLoop = () => {
+    // handle key down
     if (this._last_value && this._figure) {
       switch (this._last_value) {
         case LEFT_KEY: this._figure.moveLeft(); break;
@@ -39,8 +41,9 @@ class TetrisGame {
     }
     this._last_value = null;
 
+    // handle falling figure
     this._loop_counter += 1;
-    if (this._loop_counter % FRAMES === 0) {
+    if (this._loop_counter % this._falling_speed === 0) {
       if (this._figure) {
         this._figure.moveDown();
         if (this._figure.shouldStop()) {
@@ -52,7 +55,12 @@ class TetrisGame {
         this._figure = createRandomFigure(this.matrix);
       }
     }
+    // increase speed
+    if (this._loop_counter in FALLING_SPEED) {
+      this._falling_speed = FALLING_SPEED[this._loop_counter];
+    }
 
+    // call react change state
     this.matrix = [...this.matrix]; // react count on reference equality, so we have to copy array
     this._changeMatrix(this.matrix);
     this._changeScore(this._score);
@@ -107,7 +115,6 @@ class TetrisGame {
     if (!x_lines_full.length) {
       return;
     }
-
     let search_from, lines_to_fill = x_lines_full[0];
     search_from = lines_to_fill + 1;
     for (;search_from < FIELD_HEIGHT; search_from++) {
